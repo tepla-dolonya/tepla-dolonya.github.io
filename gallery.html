@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Галерея напрямків — Благодійний фонд «Щира Нація»</title>
+<meta name="description" content="Фото та відео за напрямками роботи благодійного фонду «Щира Нація»: діти, тварини, люди похилого віку, спорт.">
+<meta property="og:title" content="Галерея напрямків — Благодійний фонд «Щира Нація»">
+<meta property="og:description" content="Фото та відео за напрямками: діти, тварини, люди похилого віку, спорт.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --blue:#002087;
+    --blue-deep:#000C3D;
+    --blue-soft:#EEF1FB;
+    --blue-line:rgba(0,32,135,0.14);
+    --yellow:#F2B705;
+    --yellow-deep:#C98F00;
+    --font-display:'Unbounded', 'Arial Black', sans-serif;
+    --font-body:'Golos Text', 'Segoe UI', Arial, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--blue-deep);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+
+  .thread{
+    display:flex; align-items:center; gap:14px;
+    font-family:var(--font-body); font-weight:700; font-size:13px;
+    letter-spacing:0.16em; text-transform:uppercase; color:var(--blue);
+    margin-bottom:18px;
+  }
+  .thread::before{content:""; width:34px; height:3px; background:var(--yellow); border-radius:3px; flex:none;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--blue-line);
+  }
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px;}
+  .nav-logo{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:18px; color:var(--blue);}
+  .nav-logo .mark{width:40px; height:40px; flex:none; display:block;}
+  .nav-links{display:flex; gap:36px; font-size:15px; font-weight:500;}
+  .nav-links a{position:relative; padding:4px 0; color:var(--blue-deep);}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-links a.is-active{color:var(--blue); font-weight:700;}
+  .nav-burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .nav-burger span{width:24px; height:3px; background:var(--blue); border-radius:2px;}
+
+  /* ---------- PAGE HEAD ---------- */
+  .page-head{background:var(--blue); color:var(--white); padding:74px 0 78px;}
+  .page-head .thread{color:var(--yellow);}
+  .page-head h1{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(32px,4.6vw,54px);
+    line-height:1.1; letter-spacing:-0.01em; max-width:760px;
+  }
+  .page-head h1 em{font-style:normal; color:var(--yellow);}
+  .page-head p{font-size:18px; line-height:1.7; max-width:620px; color:rgba(255,255,255,0.8); margin-top:20px;}
+  .crumbs{font-size:13.5px; color:rgba(255,255,255,0.6); margin-bottom:22px;}
+  .crumbs a:hover{color:var(--yellow);}
+
+  section{padding:96px 0;}
+
+  /* ---------- TABS ---------- */
+  .tabs-bar{background:var(--white); border-bottom:1px solid var(--blue-line); padding:0;}
+  .tabs{display:flex; gap:10px; flex-wrap:wrap; padding:22px 0;}
+  .tab{
+    font-family:var(--font-body); font-size:15px; font-weight:600; cursor:pointer;
+    background:var(--blue-soft); color:var(--blue); border:1px solid var(--blue-line);
+    padding:12px 22px; border-radius:100px; transition:background .2s ease, color .2s ease;
+  }
+  .tab:hover{background:#E2E8F9;}
+  .tab.is-active{background:var(--blue); color:var(--white); border-color:var(--blue);}
+
+  /* ---------- GALLERY BODY ---------- */
+  .gal-section{background:var(--blue-soft);}
+  .section-head{max-width:680px; margin-bottom:44px;}
+  h2{font-family:var(--font-display); font-weight:600; font-size:clamp(26px,3.2vw,40px); line-height:1.15; color:var(--blue);}
+  .lede{font-size:18px; line-height:1.7; color:#33406B; margin-top:18px;}
+
+  .ph-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .ph{
+    position:relative; aspect-ratio:4/3; border-radius:16px;
+    background:var(--white); border:1.5px dashed rgba(0,32,135,0.28);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+    text-align:center; padding:22px; break-inside:avoid;
+  }
+  .ph-icon{
+    width:52px; height:52px; border-radius:50%; background:var(--blue-soft);
+    display:flex; align-items:center; justify-content:center; color:var(--blue); flex:none;
+  }
+  .ph-icon svg{width:22px; height:22px;}
+  .ph-video .ph-icon{background:var(--yellow); color:var(--blue-deep);}
+  .ph-kind{font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue);}
+  .ph-text{font-size:14px; line-height:1.5; color:#5A6494;}
+  .gal-note{margin-top:26px; font-size:13.5px; color:#5A6494; font-style:italic;}
+
+  /* ---------- CTA ---------- */
+  .update-note{background:var(--blue-deep); color:var(--white);}
+  .update-grid{display:grid; grid-template-columns:1fr auto; align-items:center; gap:40px;}
+  .update-grid h2{color:var(--white);}
+  .update-grid .lede{color:rgba(255,255,255,0.78);}
+  .btn-yellow{
+    display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
+    background:var(--yellow); color:var(--blue-deep); font-weight:700; font-size:15px;
+    padding:18px 30px; border-radius:100px; box-shadow:0 16px 34px -14px rgba(242,183,5,0.6);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--blue); color:var(--white); padding:64px 0 36px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 0.9fr 1.1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.16);}
+  .foot-logo{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:19px; margin-bottom:14px;}
+  .foot-logo .mark{width:46px; height:46px; flex:none; display:block;}
+  .foot-grid p{font-size:14.5px; line-height:1.65; color:rgba(255,255,255,0.72); max-width:320px;}
+  .foot-col h4{font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:16px;}
+  .foot-col a, .foot-col p{display:block; font-size:14.5px; color:rgba(255,255,255,0.78); margin-bottom:10px;}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; font-size:13px; color:rgba(255,255,255,0.55); flex-wrap:wrap; gap:12px;}
+
+  /* без JS показуємо всі напрямки; з JS — лише активний */
+  body.has-js .gal-section{display:none;}
+  body.has-js .gal-section.is-active{display:block;}
+
+  /* ================= RESPONSIVE ================= */
+  @media screen and (max-width: 980px){
+    .wrap{padding:0 24px;}
+    .nav-links{display:none;}
+    .nav-burger{display:flex;}
+    .ph-grid{grid-template-columns:repeat(2,1fr);}
+    .update-grid{grid-template-columns:1fr; text-align:left;}
+    .foot-grid{grid-template-columns:1fr 1fr; row-gap:32px;}
+  }
+  @media screen and (max-width: 620px){
+    section{padding:64px 0;}
+    .page-head{padding:56px 0 60px;}
+    .page-head p{font-size:16.5px;}
+    .tabs{gap:8px; padding:18px 0;}
+    .tab{font-size:13.5px; padding:10px 16px;}
+    .ph-grid{grid-template-columns:1fr; gap:16px;}
+    .ph{aspect-ratio:16/10;}
+    .foot-grid{grid-template-columns:1fr;}
+    .foot-bottom{flex-direction:column; align-items:flex-start;}
+  }
+  @media print{
+    *{box-shadow:none !important;}
+    .nav{position:static;}
+    body.has-js .gal-section{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-logo" href="index.html"><img class="mark" src="logo-mark.png" alt="Логотип фонду «Щира Нація»"> Щира Нація</a>
+    <div class="nav-links">
+      <a href="index.html#about">Про фонд</a>
+      <a href="index.html#directions">Напрямки</a>
+      <a href="gallery.html" class="is-active">Галерея</a>
+      <a href="partners.html">Партнери</a>
+      <a href="index.html#news">Новини</a>
+    </div>
+    <button class="nav-burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEAD ============ -->
+<section class="page-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Головна</a> · <a href="index.html#directions">Напрямки</a> · Галерея</div>
+    <div class="thread">Галерея напрямків</div>
+    <h1>Фото та відео <em>за напрямками</em> фонду</h1>
+    <p id="head-sub">Оберіть напрямок — і побачите матеріали з поїздок, зустрічей та подій команди фонду.</p>
+  </div>
+</section>
+
+<!-- ============ TABS ============ -->
+<div class="tabs-bar">
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" data-dir="children" role="tab">Діти</button>
+      <button class="tab" data-dir="animals" role="tab">Тварини</button>
+      <button class="tab" data-dir="elderly" role="tab">Люди похилого віку</button>
+      <button class="tab" data-dir="sport" role="tab">Спорт</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GALLERY SECTIONS ============ -->
+<section class="gal-section is-active" id="dir-children" data-sub="Матеріали напрямку «Діти»: табори, зустрічі з родинами, навчальні та лікувальні програми.">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="thread">Напрямок · Діти</div>
+      <h2>Діти</h2>
+      <p class="lede">Підтримка родин, лікування, навчання та літні табори для дітей з малозабезпечених сімей.</p>
+    </div>
+    <div class="ph-grid">
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph ph-video"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-kind">Відео</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph ph-video"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-kind">Відео</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+    </div>
+    <p class="gal-note">Матеріали цього напрямку додає власник фонду — фото та відео з'являються на сторінці одразу після надсилання в чат з агентом.</p>
+  </div>
+</section>
+
+<section class="gal-section" id="dir-animals" data-sub="Матеріали напрямку «Тварини»: партнерські притулки, лікування та пошук домівок.">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="thread">Напрямок · Тварини</div>
+      <h2>Тварини</h2>
+      <p class="lede">Порятунок, лікування та пошук домівок для безпритульних тварин у партнерських притулках.</p>
+    </div>
+    <div class="ph-grid">
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph ph-video"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-kind">Відео</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph ph-video"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-kind">Відео</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+    </div>
+    <p class="gal-note">Матеріали цього напрямку додає власник фонду — фото та відео з'являються на сторінці одразу після надсилання в чат з агентом.</p>
+  </div>
+</section>
+
+<section class="gal-section" id="dir-elderly" data-sub="Матеріали напрямку «Люди похилого віку»: візити, продуктові набори, підтримка самотніх людей.">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="thread">Напрямок · Люди похилого віку</div>
+      <h2>Люди похилого віку</h2>
+      <p class="lede">Продуктові набори, ліки та регулярне спілкування для самотніх людей похилого віку.</p>
+    </div>
+    <div class="ph-grid">
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph ph-video"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-kind">Відео</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph ph-video"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-kind">Відео</span><p class="ph-text">Матеріали додаються</p></div>
+    </div>
+    <p class="gal-note">Матеріали цього напрямку додає власник фонду — фото та відео з'являються на сторінці одразу після надсилання в чат з агентом.</p>
+  </div>
+</section>
+
+<section class="gal-section" id="dir-sport" data-sub="Матеріали напрямку «Спорт»: тренування, змагання та підтримка спортсменів з інвалідністю.">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="thread">Напрямок · Спорт</div>
+      <h2>Спорт</h2>
+      <p class="lede">Інвентар, тренування та участь у змаганнях для спортсменів з інвалідністю.</p>
+    </div>
+    <div class="ph-grid">
+      <div class="ph ph-video"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-kind">Відео</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph ph-video"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="ph-kind">Відео</span><p class="ph-text">Матеріали додаються</p></div>
+      <div class="ph"><div class="ph-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5l3.5-4.5z"/></svg></div><span class="ph-kind">Фото</span><p class="ph-text">Матеріали додаються</p></div>
+    </div>
+    <p class="gal-note">Матеріали цього напрямку додає власник фонду — фото та відео з'являються на сторінці одразу після надсилання в чат з агентом.</p>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="update-note">
+  <div class="wrap update-grid">
+    <div>
+      <div class="thread" style="color:var(--yellow);">Як оновлюється галерея</div>
+      <h2>Нові фото та відео додає власник фонду — просто в чаті з агентом</h2>
+      <p class="lede">Матеріали за напрямками з'являються тут одразу після кожного візиту команди.</p>
+    </div>
+    <a href="mailto:sincere.nation.ua@gmail.com" class="btn-yellow">Написати нам →</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img class="mark" src="logo-mark.png" alt="Логотип фонду «Щира Нація»"> Щира Нація</div>
+        <p>Благодійний фонд, що підтримує дітей, тварин, людей похилого віку та спортсменів з інвалідністю по всій Україні.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Розділи</h4>
+        <a href="index.html#about">Про фонд</a>
+        <a href="index.html#directions">Напрямки</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="partners.html">Партнери</a>
+        <a href="index.html#news">Новини</a>
+      </div>
+      <div class="foot-col">
+        <h4>Напрямки</h4>
+        <a href="gallery.html?dir=children">Діти</a>
+        <a href="gallery.html?dir=animals">Тварини</a>
+        <a href="gallery.html?dir=elderly">Люди похилого віку</a>
+        <a href="gallery.html?dir=sport">Спорт</a>
+      </div>
+      <div class="foot-col">
+        <h4>Контакти</h4>
+        <a href="tel:+380684530914">+38 068 453 09 14</a>
+        <a href="mailto:sincere.nation.ua@gmail.com">sincere.nation.ua@gmail.com</a>
+        <a href="https://t.me/s_n_charitable" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://www.instagram.com/sincere.nation.ua" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Благодійний фонд «Щира Нація»</span>
+      <span>Сайт без збору коштів і заявок — лише інформація про фонд</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.body.classList.add('has-js');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var sub  = document.getElementById('head-sub');
+  var valid = ['children','animals','elderly','sport'];
+
+  function show(dir, push){
+    if(valid.indexOf(dir) === -1){ dir = 'children'; }
+    tabs.forEach(function(t){ t.classList.toggle('is-active', t.dataset.dir === dir); });
+    document.querySelectorAll('.gal-section').forEach(function(s){
+      var on = (s.id === 'dir-' + dir);
+      s.classList.toggle('is-active', on);
+      if(on && s.dataset.sub){ sub.textContent = s.dataset.sub; }
+    });
+    if(push && window.history && history.replaceState){
+      history.replaceState(null, '', 'gallery.html?dir=' + dir);
+    }
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      show(t.dataset.dir, true);
+      var navH = document.querySelector('.nav').offsetHeight || 0;
+      window.scrollTo({top: Math.max(0, document.querySelector('.tabs-bar').offsetTop - navH), behavior:'smooth'});
+    });
+  });
+
+  var param = new URLSearchParams(window.location.search).get('dir');
+  show(param || 'children', false);
+})();
+</script>
+
+</body>
+</html>

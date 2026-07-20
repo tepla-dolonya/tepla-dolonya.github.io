@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Партнери — Благодійний фонд «Щира Нація»</title>
+<meta name="description" content="Партнери благодійного фонду «Щира Нація» — компанії та організації, які підтримують соціальні та гуманітарні ініціативи фонду.">
+<meta property="og:title" content="Партнери — Благодійний фонд «Щира Нація»">
+<meta property="og:description" content="Компанії та організації, які підтримують благодійні ініціативи фонду «Щира Нація».">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --blue:#002087;
+    --blue-deep:#000C3D;
+    --blue-soft:#EEF1FB;
+    --blue-line:rgba(0,32,135,0.14);
+    --yellow:#F2B705;
+    --yellow-deep:#C98F00;
+    --font-display:'Unbounded', 'Arial Black', sans-serif;
+    --font-body:'Golos Text', 'Segoe UI', Arial, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--blue-deep);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+
+  .thread{
+    display:flex; align-items:center; gap:14px;
+    font-family:var(--font-body); font-weight:700; font-size:13px;
+    letter-spacing:0.16em; text-transform:uppercase; color:var(--blue);
+    margin-bottom:18px;
+  }
+  .thread::before{content:""; width:34px; height:3px; background:var(--yellow); border-radius:3px; flex:none;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--blue-line);
+  }
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px;}
+  .nav-logo{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:18px; color:var(--blue);}
+  .nav-logo .mark{width:40px; height:40px; flex:none; display:block;}
+  .nav-links{display:flex; gap:36px; font-size:15px; font-weight:500;}
+  .nav-links a{position:relative; padding:4px 0; color:var(--blue-deep);}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-links a.is-active{color:var(--blue); font-weight:700;}
+  .nav-burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .nav-burger span{width:24px; height:3px; background:var(--blue); border-radius:2px;}
+
+  /* ---------- PAGE HEAD ---------- */
+  .page-head{background:var(--blue); color:var(--white); padding:74px 0 78px;}
+  .page-head .thread{color:var(--yellow);}
+  .page-head h1{
+    font-family:var(--font-display); font-weight:700; font-size:clamp(32px,4.6vw,54px);
+    line-height:1.1; letter-spacing:-0.01em; max-width:760px;
+  }
+  .page-head h1 em{font-style:normal; color:var(--yellow);}
+  .page-head p{font-size:18px; line-height:1.7; max-width:620px; color:rgba(255,255,255,0.8); margin-top:20px;}
+  .crumbs{font-size:13.5px; color:rgba(255,255,255,0.6); margin-bottom:22px;}
+  .crumbs a:hover{color:var(--yellow);}
+
+  section{padding:96px 0;}
+
+  /* ---------- PARTNERS GRID ---------- */
+  .partners{background:var(--blue-soft);}
+  .part-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .part-card{
+    background:var(--white); border:1px solid var(--blue-line); border-radius:20px;
+    padding:26px; display:flex; flex-direction:column; gap:20px;
+    box-shadow:0 18px 40px -28px rgba(0,32,135,0.4);
+    break-inside:avoid;
+  }
+  /* біла підложка однакового розміру — логотипи різних форматів не «стрибають» */
+  .part-logo{
+    background:var(--white); border:1px solid var(--blue-line); border-radius:14px;
+    height:140px; display:flex; align-items:center; justify-content:center; padding:18px; flex:none;
+  }
+  .part-logo img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain;}
+  .part-card p{font-size:15px; line-height:1.65; color:#33406B;}
+
+  /* ---------- CTA ---------- */
+  .update-note{background:var(--blue-deep); color:var(--white);}
+  .update-grid{display:grid; grid-template-columns:1fr auto; align-items:center; gap:40px;}
+  .update-grid h2{font-family:var(--font-display); font-weight:600; font-size:clamp(26px,3.2vw,38px); line-height:1.18; color:var(--white);}
+  .update-grid .lede{font-size:18px; line-height:1.7; color:rgba(255,255,255,0.78); margin-top:18px;}
+  .btn-yellow{
+    display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
+    background:var(--yellow); color:var(--blue-deep); font-weight:700; font-size:15px;
+    padding:18px 30px; border-radius:100px; box-shadow:0 16px 34px -14px rgba(242,183,5,0.6);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--blue); color:var(--white); padding:64px 0 36px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 0.9fr 1.1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.16);}
+  .foot-logo{display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:700; font-size:19px; margin-bottom:14px;}
+  .foot-logo .mark{width:46px; height:46px; flex:none; display:block;}
+  .foot-grid p{font-size:14.5px; line-height:1.65; color:rgba(255,255,255,0.72); max-width:320px;}
+  .foot-col h4{font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--yellow); margin-bottom:16px;}
+  .foot-col a, .foot-col p{display:block; font-size:14.5px; color:rgba(255,255,255,0.78); margin-bottom:10px;}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:26px; font-size:13px; color:rgba(255,255,255,0.55); flex-wrap:wrap; gap:12px;}
+
+  /* ================= RESPONSIVE ================= */
+  @media screen and (max-width: 980px){
+    .wrap{padding:0 24px;}
+    .nav-links{display:none;}
+    .nav-burger{display:flex;}
+    .part-grid{grid-template-columns:repeat(2,1fr);}
+    .update-grid{grid-template-columns:1fr; text-align:left;}
+    .foot-grid{grid-template-columns:1fr 1fr; row-gap:32px;}
+  }
+  @media screen and (max-width: 620px){
+    section{padding:64px 0;}
+    .page-head{padding:56px 0 60px;}
+    .page-head p{font-size:16.5px;}
+    .part-grid{grid-template-columns:1fr; gap:20px;}
+    .part-logo{height:120px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .foot-bottom{flex-direction:column; align-items:flex-start;}
+  }
+  @media print{
+    *{box-shadow:none !important;}
+    .nav{position:static;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-logo" href="index.html"><img class="mark" src="logo-mark.png" alt="Логотип фонду «Щира Нація»"> Щира Нація</a>
+    <div class="nav-links">
+      <a href="index.html#about">Про фонд</a>
+      <a href="index.html#directions">Напрямки</a>
+      <a href="gallery.html">Галерея</a>
+      <a href="partners.html" class="is-active">Партнери</a>
+      <a href="index.html#news">Новини</a>
+    </div>
+    <button class="nav-burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEAD ============ -->
+<section class="page-head">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Головна</a> · Партнери</div>
+    <div class="thread">Партнери фонду</div>
+    <h1>Ті, хто робить добрі справи <em>можливими</em></h1>
+    <p>Компанії та організації, які підтримують ініціативи благодійного фонду «Щира Нація» — від гуманітарних проєктів до соціальних заходів у громадах.</p>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="partners">
+  <div class="wrap">
+    <div class="part-grid">
+      <div class="part-card">
+        <div class="part-logo"><img src="partner1.png" alt="Логотип партнера фонду"></div>
+        <p>Надійний партнер БФ «Щира Нація», який підтримує соціальні та гуманітарні ініціативи, допомагаючи робити добрі справи доступними.</p>
+      </div>
+      <div class="part-card">
+        <div class="part-logo"><img src="partner2.png" alt="Логотип партнера фонду"></div>
+        <p>Партнер фонду, з яким нас об'єднують спільні цінності доброчинності, взаємодопомоги та підтримки людей у складних життєвих обставинах.</p>
+      </div>
+      <div class="part-card">
+        <div class="part-logo"><img src="partner3.png" alt="Логотип партнера фонду"></div>
+        <p>Соціально відповідальний бізнес-партнер, який підтримує благодійні проєкти фонду та сприяє розвитку суспільно важливих ініціатив.</p>
+      </div>
+      <div class="part-card">
+        <div class="part-logo"><img src="partner4.png" alt="Логотип партнера фонду"></div>
+        <p>Партнер БФ «Щира Нація», який долучається до реалізації благодійних ініціатив та підтримує розвиток культури соціальної відповідальності.</p>
+      </div>
+      <div class="part-card">
+        <div class="part-logo"><img src="partner5.png" alt="Логотип партнера фонду"></div>
+        <p>Партнер фонду, який підтримує благодійні заходи та допомагає втілювати проєкти, спрямовані на підтримку людей і громад.</p>
+      </div>
+      <div class="part-card">
+        <div class="part-logo"><img src="partner6.png" alt="Логотип партнера фонду"></div>
+        <p>Надійний партнер благодійних заходів фонду, який підтримує наші ініціативи та допомагає реалізовувати важливі соціальні проєкти.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="update-note">
+  <div class="wrap update-grid">
+    <div>
+      <div class="thread" style="color:var(--yellow);">Співпраця</div>
+      <h2>Хочете стати партнером фонду?</h2>
+      <p class="lede">Напишіть нам — розкажемо про поточні програми та формати підтримки.</p>
+    </div>
+    <a href="mailto:sincere.nation.ua@gmail.com" class="btn-yellow">Написати нам →</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><img class="mark" src="logo-mark.png" alt="Логотип фонду «Щира Нація»"> Щира Нація</div>
+        <p>Благодійний фонд, що підтримує дітей, тварин, людей похилого віку та спортсменів з інвалідністю по всій Україні.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Розділи</h4>
+        <a href="index.html#about">Про фонд</a>
+        <a href="index.html#directions">Напрямки</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="partners.html">Партнери</a>
+        <a href="index.html#news">Новини</a>
+      </div>
+      <div class="foot-col">
+        <h4>Контакти</h4>
+        <a href="tel:+380684530914">+38 068 453 09 14</a>
+        <a href="mailto:sincere.nation.ua@gmail.com">sincere.nation.ua@gmail.com</a>
+        <a href="https://t.me/s_n_charitable" target="_blank" rel="noopener">Telegram</a>
+      </div>
+      <div class="foot-col">
+        <h4>Соцмережі</h4>
+        <a href="https://www.instagram.com/sincere.nation.ua" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@sincere.nation.ua" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.threads.com/@sincere.nation.ua" target="_blank" rel="noopener">Threads</a>
+        <a href="https://www.facebook.com/share/1G5fQMCkK8/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://youtube.com/@sincerenationua" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Благодійний фонд «Щира Нація»</span>
+      <span>Сайт без збору коштів і заявок — лише інформація про фонд</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

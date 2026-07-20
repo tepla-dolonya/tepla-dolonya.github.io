@@ -70,6 +70,13 @@
     background:linear-gradient(180deg, rgba(0,12,61,0.15) 0%, rgba(0,12,61,0.35) 45%, rgba(0,12,61,0.92) 100%);
   }
   .hero-content{position:relative; z-index:2; color:var(--white); padding-top:80px; padding-bottom:64px;}
+  /* правка клієнта: знак фонду в hero */
+  .hero-logo{
+    width:128px; height:128px; flex:none; display:block; margin-bottom:22px;
+    border-radius:50%; background:rgba(255,255,255,0.94);
+    padding:8px; object-fit:contain;
+    box-shadow:0 20px 44px -18px rgba(0,12,61,0.75);
+  }
   .hero-eyebrow{
     display:inline-flex; align-items:center; gap:10px;
     font-size:13px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
@@ -113,13 +120,24 @@
   .directions{background:var(--white);}
   .dir-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
   .dir-card{
-    position:relative; border-radius:20px; overflow:hidden; aspect-ratio:3/4;
+    position:relative; display:block; border-radius:20px; overflow:hidden; aspect-ratio:3/4;
     box-shadow:0 18px 40px -22px rgba(0,32,135,0.35);
-    break-inside:avoid;
+    break-inside:avoid; color:inherit;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .dir-card:hover{transform:translateY(-4px); box-shadow:0 26px 50px -22px rgba(0,32,135,0.5);}
+  .dir-more{
+    display:inline-flex; align-items:center; gap:7px; margin-top:12px;
+    font-size:13px; font-weight:700; color:var(--yellow);
   }
   .dir-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
-  .dir-shade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,12,61,0.05) 30%, rgba(0,12,61,0.92) 100%);}
-  .dir-body{position:absolute; left:0; right:0; bottom:0; padding:24px 22px; color:var(--white);}
+  /* картка стала кнопкою (додався рядок «Дивитись галерею») — тінь темнішає раніше, щоб текст читався */
+  .dir-shade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,12,61,0.05) 18%, rgba(0,12,61,0.62) 55%, rgba(0,12,61,0.95) 100%);}
+  /* власна підложка під текстовим блоком — гарантує контраст на будь-якій висоті картки */
+  .dir-body{
+    position:absolute; left:0; right:0; bottom:0; padding:24px 22px; color:var(--white);
+    background:linear-gradient(180deg, rgba(0,12,61,0) 0%, rgba(0,12,61,0.6) 26%, rgba(0,12,61,0.93) 100%);
+  }
   .dir-num{font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--yellow); display:block; margin-bottom:8px;}
   .dir-body h3{font-family:var(--font-display); font-size:21px; font-weight:600; margin-bottom:8px;}
   .dir-body p{font-size:14px; line-height:1.55; color:rgba(255,255,255,0.85);}
@@ -201,14 +219,18 @@
     .update-grid{grid-template-columns:1fr; text-align:left;}
     .foot-grid{grid-template-columns:1fr 1fr; row-gap:32px;}
   }
+  @media screen and (max-width: 980px){
+    .hero-logo{width:110px; height:110px; margin-bottom:18px;}
+  }
   @media screen and (max-width: 620px){
     section{padding:72px 0;}
     .hero{min-height:560px;}
     .hero-content{padding-top:56px; padding-bottom:44px;}
+    .hero-logo{width:84px; height:84px; padding:6px; margin-bottom:14px;}
     .hero p{font-size:17px;}
     .hero-stats{gap:28px;}
     .dir-grid{grid-template-columns:1fr;}
-    .dir-card{aspect-ratio:16/10;}
+    .dir-card{aspect-ratio:4/3;}
     .gal-grid{grid-template-columns:1fr;}
     .gal-big,.gal-tall,.gal-wide,.gal-small{grid-column:span 1;}
     .news-item{grid-template-columns:64px 1fr; grid-template-areas:"date title" "date arrow"; gap:16px 20px;}
@@ -217,6 +239,10 @@
     .news-arrow{display:none;}
     .foot-grid{grid-template-columns:1fr;}
     .foot-bottom{flex-direction:column; align-items:flex-start;}
+  }
+  @media print{
+    *{box-shadow:none !important;}
+    .nav{position:static;}
   }
 
 </style>
@@ -231,6 +257,7 @@
       <a href="#about">Про фонд</a>
       <a href="#directions">Напрямки</a>
       <a href="#gallery">Галерея</a>
+      <a href="partners.html">Партнери</a>
       <a href="#news">Новини</a>
     </div>
     <button class="nav-burger" aria-label="Меню"><span></span><span></span><span></span></button>
@@ -242,8 +269,9 @@
   <img class="hero-img" src="photo1.jpg" alt="Волонтер фонду з дитиною">
   <div class="hero-shade"></div>
   <div class="wrap hero-content">
+    <img class="hero-logo" src="logo-mark.png" alt="Логотип фонду «Щира Нація»">
     <div class="hero-eyebrow"><span class="dot"></span> Благодійний фонд · з 2019 року</div>
-    <h1>Допомога, яка<br>доходить <em>до кожного</em>,<br>хто на неї чекає</h1>
+    <h1>Благодійний фонд<br><em>«Щира Нація»</em></h1>
     <p>Ми підтримуємо дітей, тварин, людей похилого віку та спортсменів з інвалідністю. Прозоро, послідовно, поруч.</p>
     <div class="hero-stats">
       <div class="hero-stat"><b>1 240+</b><span>людей отримали допомогу</span></div>
@@ -279,42 +307,46 @@
       <p class="lede">Кожен напрямок має власну команду, партнерів та окрему звітність — щоб допомога доходила точно за призначенням.</p>
     </div>
     <div class="dir-grid">
-      <div class="dir-card">
+      <a class="dir-card" href="gallery.html?dir=children">
         <img src="photo1.jpg" alt="Напрямок «Діти»">
         <div class="dir-shade"></div>
         <div class="dir-body">
           <span class="dir-num">Напрямок</span>
           <h3>Діти</h3>
           <p>Підтримка родин, лікування, навчання та літні табори для дітей з малозабезпечених сімей.</p>
+          <span class="dir-more">Дивитись галерею →</span>
         </div>
-      </div>
-      <div class="dir-card">
+      </a>
+      <a class="dir-card" href="gallery.html?dir=animals">
         <img src="photo2.jpg" alt="Напрямок «Тварини»">
         <div class="dir-shade"></div>
         <div class="dir-body">
           <span class="dir-num">Напрямок</span>
           <h3>Тварини</h3>
           <p>Порятунок, лікування та пошук домівок для безпритульних тварин у партнерських притулках.</p>
+          <span class="dir-more">Дивитись галерею →</span>
         </div>
-      </div>
-      <div class="dir-card">
+      </a>
+      <a class="dir-card" href="gallery.html?dir=elderly">
         <img src="photo3.jpg" alt="Напрямок «Люди похилого віку»">
         <div class="dir-shade"></div>
         <div class="dir-body">
           <span class="dir-num">Напрямок</span>
           <h3>Люди похилого віку</h3>
           <p>Продуктові набори, ліки та регулярне спілкування для самотніх людей похилого віку.</p>
+          <span class="dir-more">Дивитись галерею →</span>
         </div>
-      </div>
-      <div class="dir-card">
+      </a>
+      <a class="dir-card" href="gallery.html?dir=sport">
         <img src="photo4.jpg" alt="Напрямок «Спорт»">
         <div class="dir-shade"></div>
         <div class="dir-body">
           <span class="dir-num">Напрямок</span>
           <h3>Спорт</h3>
           <p>Інвентар, тренування та участь у змаганнях для спортсменів з інвалідністю.</p>
+          <span class="dir-more">Дивитись галерею →</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -426,6 +458,7 @@
         <a href="#about">Про фонд</a>
         <a href="#directions">Напрямки</a>
         <a href="#gallery">Галерея</a>
+        <a href="partners.html">Партнери</a>
         <a href="#news">Новини</a>
       </div>
       <div class="foot-col">
